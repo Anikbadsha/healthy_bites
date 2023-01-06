@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:healthy_bites/Color_Me/Color_me.dart';
 import 'package:healthy_bites/IMP/route.dart';
 import 'package:healthy_bites/main.dart';
 import 'package:new_version/new_version.dart';
@@ -89,14 +90,27 @@ class SplashScreenState extends State<SplashScreen>
       body: Container(
         height: MediaQuery.of(context).size.height,
         width: MediaQuery.of(context).size.width,
-        decoration: BoxDecoration(
-            image: DecorationImage(
-          image: AssetImage("assets/slash.png"),
-        )),
-
-        // child: Text(
-        //   "Healthy Bites",
-        // ),
+        child: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Icon(
+                Icons.shopping_bag,
+                color: Color_me.main,
+                size: 60,
+              ),
+              Center(
+                child: Text(
+                  "Healthy Bites",
+                  style: TextStyle(
+                      color: Color_me.main,
+                      fontWeight: FontWeight.w700,
+                      fontSize: 35),
+                ),
+              ),
+            ],
+          ),
+        ),
       ),
     );
   }

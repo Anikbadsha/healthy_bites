@@ -76,7 +76,7 @@ dev_dependencies:
 flutter_icons:
   android: "launcher_icon"
   ios: true
-  image_path: "assets/logo.png"
+  image_path: "assets/Healthy-Bites.png"
 
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is
@@ -101,7 +101,6 @@ flutter:
     - Language/en-EN.json
     - Language/bn-BN.json
     - assets/kiss.jpg
-    - assets/banner.jpg
     - assets/logo.png
     - assets/avator.png
     - assets/alu.jpg

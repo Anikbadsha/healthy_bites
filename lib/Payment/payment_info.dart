@@ -768,88 +768,57 @@ class _PaymentInfoState extends State<PaymentInfo> {
                     color: Colors.white,
                     width: MediaQuery.of(context).size.width,
                     height: 50,
-                    child: Row(
-                      children: [
-                        Expanded(
-                            child: GestureDetector(
-                          onTap: () {
-                            Bottom_sheet(_selectedValue);
-                          },
-                          child: Card(
+                    child: FittedBox(
+                      child: Row(
+                        children: [
+                          GestureDetector(
+                            onTap: () {
+                              Bottom_sheet(_selectedValue);
+                            },
+                            child: Card(
+                              child: GestureDetector(
+                                onTap: () {
+                                  Navigator.pop(context);
+                                },
+                                child: Container(
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(5),
+                                    color: Colors.grey,
+                                  ),
+                                  alignment: Alignment.center,
+                                  width: MediaQuery.of(context).size.width,
+                                  height: MediaQuery.of(context).size.height,
+                                  child: Text("Cancel"),
+                                ),
+                              ),
+                            ),
+                          ),
+                          Card(
                             child: GestureDetector(
                               onTap: () {
-                                Navigator.pop(context);
-                              },
-                              child: Container(
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(5),
-                                  color: Colors.grey,
-                                ),
-                                alignment: Alignment.center,
-                                width: MediaQuery.of(context).size.width,
-                                height: MediaQuery.of(context).size.height,
-                                child: Text("Cancel"),
-                              ),
-                            ),
-                          ),
-                        )),
-                        Expanded(
-                          child:
-                              /*Card(
-                          child: GestureDetector(
-                            onTap: () {
-                              if (prefs.containsKey('uid')) {
-                                Place_Order(date);
-                              } else {
-                                Navigator.pushNamed(context, LOGIN);
-                              }
-                            },
-                            child: Container(
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(5),
-                                color: Color_me.main,
-                              ),
-                              alignment: Alignment.center,
-                              width: MediaQuery.of(context).size.width,
-                              height: MediaQuery.of(context).size.height,
-                              child: Text(
-                                "Confirm",
-                                style: TextStyle(color: Colors.white),
-                              ),
-                            ),
-                          ),
-                        )*/
-
-                              ArgonButton(
-                            height: 40,
-                            roundLoadingShape: true,
-                            width: MediaQuery.of(context).size.width,
-                            onTap: (startLoading, stopLoading, btnState) {
-                              if (btnState == ButtonState.Idle) {
                                 if (prefs!.containsKey('uid')) {
-                                  startLoading();
                                   Place_Order(date);
                                 } else {
                                   Navigator.pushNamed(context, LOGIN);
                                 }
-                              } else {
-                                stopLoading();
-                              }
-                            },
-                            child: setCommonText("Confirm", Colors.white, 18.0,
-                                FontWeight.w700, 1),
-                            loader: Container(
-                              padding: EdgeInsets.all(10),
-                              child: SpinKitRotatingCircle(
-                                color: Colors.white,
-                                // size: loaderWidth ,
+                              },
+                              child: Container(
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(5),
+                                  color: Color_me.main,
+                                ),
+                                alignment: Alignment.center,
+                                width: MediaQuery.of(context).size.width,
+                                height: MediaQuery.of(context).size.height,
+                                child: Text(
+                                  "Confirm",
+                                  style: TextStyle(color: Colors.white),
+                                ),
                               ),
                             ),
-                            borderRadius: 5.0,
-                            color: Color_me.main,
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
                   )
                 ],

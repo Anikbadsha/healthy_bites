@@ -247,7 +247,7 @@ class _LogInState extends State<LogIn> {
         await http.post(Uri.parse('$main_url/api/customer/login'), body: {
       'phone': phoneController.text,
       'password': passwordController.text,
-      'token': token1,
+      'token': "juyhtffd",
     });
     print(response.body.toString());
     return json.decode(response.body);

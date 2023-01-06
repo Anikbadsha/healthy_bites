@@ -65,7 +65,7 @@ class _HomeState extends State<Home> {
                           alignment: Alignment.centerLeft,
                           width: MediaQuery.of(context).size.width,
                           child: Text(
-                            "আঙ্গো বাজার",
+                            "Healthy Bites",
                             style: TextStyle(fontWeight: FontWeight.w700),
                           )),
                     ),
@@ -202,7 +202,7 @@ class _HomeState extends State<Home> {
                       child: Column(
                         children: [
                           Text(
-                            "আঙ্গো বাজার",
+                            "Healthy Bites",
                             style: TextStyle(
                                 fontWeight: FontWeight.w700,
                                 fontSize: 24,
@@ -251,7 +251,7 @@ class _HomeState extends State<Home> {
                                   Expanded(
                                       flex: 1,
                                       child: prefs!.containsKey('uid')
-                                          ? InkWell(
+                                          ? GestureDetector(
                                               onTap: () {
                                                 Navigator.pushNamed(
                                                     context, PROFILE);
