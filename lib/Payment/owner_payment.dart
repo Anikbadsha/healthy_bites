@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:healthy_bites/Color_Me/Color_me.dart';
+import 'package:healthy_bites/Payment/Successfully.dart';
 import 'package:healthy_bites/Responsive/size_config.dart';
+import 'package:provider/provider.dart';
 
 class OwnerPayment extends StatefulWidget {
   @override
@@ -83,7 +85,7 @@ class _OwnerPaymentState extends State<OwnerPayment> {
                       Expanded(
                           child: GestureDetector(
                         onTap: () {
-                          //Bottom_sheet(_selectedValue);
+                          Navigator.of(context).pop();
                         },
                         child: Card(
                           child: GestureDetector(
@@ -107,7 +109,10 @@ class _OwnerPaymentState extends State<OwnerPayment> {
                           child: Card(
                         child: GestureDetector(
                           onTap: () {
-                            Navigator.pop(context);
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => SuccessfullyPage()));
                           },
                           child: Container(
                             decoration: BoxDecoration(
@@ -180,11 +185,11 @@ class _OwnerPaymentState extends State<OwnerPayment> {
     return Container(
       padding: EdgeInsets.only(left: 5, right: 5),
       margin: EdgeInsets.only(left: 5, right: 5),
-      height: 6 * SizeConfig.heightMultiplier!,
+      height: 8 * SizeConfig.heightMultiplier!,
       decoration: BoxDecoration(
-        /*border: Border.all(color: Color_me.grey,width: 1),*/
+        // border: Border.all(color: Color_me.grey, width: 1),
         borderRadius: const BorderRadius.all(
-          const Radius.circular(6.0),
+          const Radius.circular(1.0),
         ),
       ),
       width: MediaQuery.of(context).size.width,
@@ -197,6 +202,7 @@ class _OwnerPaymentState extends State<OwnerPayment> {
               borderSide: BorderSide(color: Color(0xffE50000), width: 1),
             )),
         isExpanded: true,
+        alignment: Alignment.center,
         value: _selectedtype,
         hint: Text("Payment Type"),
         onChanged: (new_value) {
@@ -300,7 +306,7 @@ class _OwnerPaymentState extends State<OwnerPayment> {
             ),
             Container(
               child: Text(
-                _selectedtype.toString() + " personal number: 01611445621",
+                _selectedtype.toString() + " personal number: 01634330813",
                 style: TextStyle(
                   fontFamily: "Poppins",
                   color: Colors.black,

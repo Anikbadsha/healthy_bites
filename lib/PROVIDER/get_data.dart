@@ -235,13 +235,13 @@ class GetData extends ChangeNotifier {
     notifyListeners();
   }
 
-  /* Future<List> get_profile() async {
-    final response = await http.get(main_url + "/api/profile");
+  Future get_profile() async {
+    final response = await http.get(Uri.parse((main_url + "/api/profile")));
     profile = json.decode(response.body.toString());
 
     print(profile);
     notifyListeners();
-  }*/
+  }
 
   Future get_point() async {
     final response =
@@ -282,7 +282,7 @@ class GetData extends ChangeNotifier {
 
     print(response.body.toString());
 
-    //return json.decode(response.body);
+    return json.decode(response.body);
     notifyListeners();
   }
 

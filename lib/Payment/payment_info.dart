@@ -15,9 +15,11 @@ import 'package:healthy_bites/IMP/route.dart';
 import 'package:healthy_bites/IMP/url.dart';
 import 'package:healthy_bites/Order/order_cart.dart';
 import 'package:healthy_bites/PROVIDER/get_data.dart';
+import 'package:healthy_bites/Payment/owner_payment.dart';
 import 'package:healthy_bites/Responsive/size_config.dart';
 import 'package:healthy_bites/main.dart';
 import 'package:http/http.dart' as http;
+import 'package:page_transition/page_transition.dart';
 import 'package:provider/provider.dart';
 
 import '../Modal/area.dart';
@@ -64,9 +66,9 @@ class _PaymentInfoState extends State<PaymentInfo> {
           "পেমেন্ট",
           style: TextStyle(color: Colors.white),
         ),
-        /* iconTheme: IconThemeData(
+        iconTheme: IconThemeData(
           color: Colors.black, //change your color here
-        ),*/
+        ),
       ),
       body: Container(
         color: Colors.black12,
@@ -595,67 +597,67 @@ class _PaymentInfoState extends State<PaymentInfo> {
               SizedBox(
                 height: 5,
               ),
-              Container(
-                color: Colors.white,
-                child: Padding(
-                  padding: EdgeInsets.all(10),
-                  child: Container(
-                      height: 50,
-                      padding: EdgeInsets.all(10),
-                      width: MediaQuery.of(context).size.width,
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(5),
-                          border: Border.all(color: Colors.grey, width: 1)
-                          /*image: DecorationImage(
-                              image: NetworkImage(widget.img),
-                              fit: BoxFit.cover
-                          )*/
-                          ),
-                      child: Row(
-                        children: [
-                          Expanded(
-                            flex: 4,
-                            child: TextFormField(
-                              controller: cuponController,
-                              cursorColor: Colors.black,
-                              keyboardType: TextInputType.text,
-                              enableInteractiveSelection: false,
-                              autofocus: false,
-                              textAlign: TextAlign.left,
-                              decoration: new InputDecoration(
-                                  prefixIcon: Icon(Icons.api_outlined),
-                                  border: OutlineInputBorder(),
-                                  focusedBorder: OutlineInputBorder(
-                                    borderSide:
-                                        BorderSide(color: Colors.transparent),
-                                  ),
-                                  enabledBorder: InputBorder.none,
-                                  errorBorder: InputBorder.none,
-                                  disabledBorder: InputBorder.none,
-                                  labelText: "কুপন এড করুন",
-                                  labelStyle: TextStyle(color: Colors.grey)
+              // Container(
+              //   color: Colors.white,
+              //   child: Padding(
+              //     padding: EdgeInsets.all(10),
+              //     child: Container(
+              //         height: 50,
+              //         padding: EdgeInsets.all(10),
+              //         width: MediaQuery.of(context).size.width,
+              //         decoration: BoxDecoration(
+              //             borderRadius: BorderRadius.circular(5),
+              //             border: Border.all(color: Colors.grey, width: 1)
+              //             /*image: DecorationImage(
+              //                 image: NetworkImage(widget.img),
+              //                 fit: BoxFit.cover
+              //             )*/
+              //             ),
+              //         child: Row(
+              //           children: [
+              //             Expanded(
+              //               flex: 4,
+              //               child: TextFormField(
+              //                 controller: cuponController,
+              //                 cursorColor: Colors.black,
+              //                 keyboardType: TextInputType.text,
+              //                 enableInteractiveSelection: false,
+              //                 autofocus: false,
+              //                 textAlign: TextAlign.left,
+              //                 decoration: new InputDecoration(
+              //                     prefixIcon: Icon(Icons.api_outlined),
+              //                     border: OutlineInputBorder(),
+              //                     focusedBorder: OutlineInputBorder(
+              //                       borderSide:
+              //                           BorderSide(color: Colors.transparent),
+              //                     ),
+              //                     enabledBorder: InputBorder.none,
+              //                     errorBorder: InputBorder.none,
+              //                     disabledBorder: InputBorder.none,
+              //                     labelText: "কুপন এড করুন",
+              //                     labelStyle: TextStyle(color: Colors.grey)
 
-                                  /*contentPadding:
-                                        EdgeInsets.only(left: 15, bottom: 11, top: 11, right: 15),*/
-                                  ),
-                            ),
-                          ),
-                          Expanded(
-                              flex: 1,
-                              child: ElevatedButton(
-                                onPressed: () {
-                                  var fetch_cupon = Provider.of<GetData>(
-                                      context,
-                                      listen: false);
-                                  fetch_cupon.get_cupon(cuponController.text
-                                      .toString() /*"valentines2021"*/);
-                                },
-                                child: Text("এড"),
-                              ))
-                        ],
-                      )),
-                ),
-              ),
+              //                     /*contentPadding:
+              //                           EdgeInsets.only(left: 15, bottom: 11, top: 11, right: 15),*/
+              //                     ),
+              //               ),
+              //             ),
+              //             Expanded(
+              //                 flex: 1,
+              //                 child: ElevatedButton(
+              //                   onPressed: () {
+              //                     var fetch_cupon = Provider.of<GetData>(
+              //                         context,
+              //                         listen: false);
+              //                     fetch_cupon.get_cupon(cuponController.text
+              //                         .toString() /*"valentines2021"*/);
+              //                   },
+              //                   child: Text("এড"),
+              //                 ))
+              //           ],
+              //         )),
+              //   ),
+              // ),
               SizedBox(
                 height: 5,
               ),
@@ -669,7 +671,10 @@ class _PaymentInfoState extends State<PaymentInfo> {
                     Expanded(
                         child: GestureDetector(
                       onTap: () {
-                        Bottom_sheet(_selectedValue.toString());
+                        {
+                          Bottom_sheet(_selectedValue.toString());
+                        }
+                        ;
                       },
                       child: Card(
                         color: Colors.black,
@@ -687,14 +692,14 @@ class _PaymentInfoState extends State<PaymentInfo> {
                     Expanded(
                         child: GestureDetector(
                       onTap: () {
-                        /*  Navigator.push(
+                        Navigator.push(
                           context,
                           PageTransition(
                               type: PageTransitionType.rightToLeft,
                               child: OwnerPayment(),
                               inheritTheme: true,
                               ctx: context),
-                        );*/
+                        );
                       },
                       child: Card(
                         color: Color_me.main,
@@ -703,7 +708,7 @@ class _PaymentInfoState extends State<PaymentInfo> {
                           width: MediaQuery.of(context).size.width,
                           height: MediaQuery.of(context).size.height,
                           child: Text(
-                            "কার্ড পেমেন্ট",
+                            "অনলাইন পেমেন্ট",
                             style: TextStyle(color: Colors.white),
                           ),
                         ),
@@ -734,116 +739,7 @@ class _PaymentInfoState extends State<PaymentInfo> {
               topLeft: const Radius.circular(20.0),
             )),
             padding: EdgeInsets.all(10),
-            height: 20 * SizeConfig.heightMultiplier!,
-            child: SingleChildScrollView(
-              child: Column(
-                children: <Widget>[
-                  Container(
-                    padding: EdgeInsets.only(left: 10),
-                    width: MediaQuery.of(context).size.width,
-                    child: Text(
-                      "Confirm Order",
-                      style: TextStyle(
-                        fontWeight: FontWeight.w700,
-                        fontSize: 18,
-                      ),
-                    ),
-                  ),
-                  SizedBox(
-                    height: 10,
-                  ),
-                  Container(
-                    padding: EdgeInsets.only(left: 10),
-                    width: MediaQuery.of(context).size.width,
-                    child: Text(
-                      "Please Confirm the order and we will Deliver Your Food On Time",
-                      style: TextStyle(color: Colors.black54, fontSize: 14),
-                    ),
-                  ),
-                  SizedBox(
-                    height: 2 * SizeConfig.heightMultiplier!,
-                  ),
-                  Container(
-                    alignment: Alignment.center,
-                    color: Colors.white,
-                    width: MediaQuery.of(context).size.width,
-                    height: 50,
-                    child: FittedBox(
-                      child: Row(
-                        children: [
-                          GestureDetector(
-                            onTap: () {
-                              Bottom_sheet(_selectedValue);
-                            },
-                            child: Card(
-                              child: GestureDetector(
-                                onTap: () {
-                                  Navigator.pop(context);
-                                },
-                                child: Container(
-                                  decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(5),
-                                    color: Colors.grey,
-                                  ),
-                                  alignment: Alignment.center,
-                                  width: MediaQuery.of(context).size.width,
-                                  height: MediaQuery.of(context).size.height,
-                                  child: Text("Cancel"),
-                                ),
-                              ),
-                            ),
-                          ),
-                          Card(
-                            child: GestureDetector(
-                              onTap: () {
-                                if (prefs!.containsKey('uid')) {
-                                  Place_Order(date);
-                                } else {
-                                  Navigator.pushNamed(context, LOGIN);
-                                }
-                              },
-                              child: Container(
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(5),
-                                  color: Color_me.main,
-                                ),
-                                alignment: Alignment.center,
-                                width: MediaQuery.of(context).size.width,
-                                height: MediaQuery.of(context).size.height,
-                                child: Text(
-                                  "Confirm",
-                                  style: TextStyle(color: Colors.white),
-                                ),
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  )
-                ],
-              ),
-            ));
-      },
-    );
-  }
-
-/*  void Bottom_sheet2(context) {
-    showModalBottomSheet(
-      isDismissible: false,
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(10.0),
-      ),
-      context: context,
-      builder: (BuildContext bc) {
-        return Container(
-            decoration: BoxDecoration(
-                borderRadius: new BorderRadius.only(
-              topRight: const Radius.circular(20.0),
-              topLeft: const Radius.circular(20.0),
-            )),
-            padding: EdgeInsets.all(10),
-            height: 60 * SizeConfig.heightMultiplier,
+            height: 60 * SizeConfig.heightMultiplier!,
             child: SingleChildScrollView(
               child: Column(
                 children: <Widget>[
@@ -893,7 +789,11 @@ class _PaymentInfoState extends State<PaymentInfo> {
                             child: Card(
                           child: GestureDetector(
                             onTap: () {
-                              Navigator.pop(context);
+                              if (prefs!.containsKey('uid')) {
+                                Place_Order(date);
+                              } else {
+                                Navigator.pushNamed(context, LOGIN);
+                              }
                             },
                             child: Container(
                               decoration: BoxDecoration(
@@ -916,9 +816,200 @@ class _PaymentInfoState extends State<PaymentInfo> {
                 ],
               ),
             ));
+
+        // Container(
+        //     decoration: BoxDecoration(
+        //         borderRadius: new BorderRadius.only(
+        //       topRight: const Radius.circular(20.0),
+        //       topLeft: const Radius.circular(20.0),
+        //     )),
+        //     padding: EdgeInsets.all(10),
+        //     height: 20 * SizeConfig.heightMultiplier!,
+        //     child: SingleChildScrollView(
+        //       child: Column(
+        //         children: <Widget>[
+        //           Container(
+        //             padding: EdgeInsets.only(left: 10),
+        //             width: MediaQuery.of(context).size.width,
+        //             child: Text(
+        //               "Confirm Order",
+        //               style: TextStyle(
+        //                 fontWeight: FontWeight.w700,
+        //                 fontSize: 18,
+        //               ),
+        //             ),
+        //           ),
+        //           SizedBox(
+        //             height: 10,
+        //           ),
+        //           Container(
+        //             padding: EdgeInsets.only(left: 10),
+        //             width: MediaQuery.of(context).size.width,
+        //             child: Text(
+        //               "Please Confirm the order and we will Deliver Your Food On Time",
+        //               style: TextStyle(color: Colors.black54, fontSize: 14),
+        //             ),
+        //           ),
+        //           SizedBox(
+        //             height: 2 * SizeConfig.heightMultiplier!,
+        //           ),
+        //           Container(
+        //             alignment: Alignment.center,
+        //             color: Colors.white,
+        //             width: MediaQuery.of(context).size.width,
+        //             height: 50,
+        //             child: FittedBox(
+        //               child: Row(
+        //                 children: [
+        //                   GestureDetector(
+        //                     onTap: () {
+        //                       Bottom_sheet(_selectedValue);
+        //                     },
+        //                     child: Card(
+        //                       child: GestureDetector(
+        //                         onTap: () {
+        //                           Navigator.pop(context);
+        //                         },
+        //                         child: Container(
+        //                           decoration: BoxDecoration(
+        //                             borderRadius: BorderRadius.circular(5),
+        //                             color: Colors.grey,
+        //                           ),
+        //                           alignment: Alignment.center,
+        //                           width:
+        //                               MediaQuery.of(context).size.width * 0.3,
+        //                           height: MediaQuery.of(context).size.height,
+        //                           child: Text("Cancel"),
+        //                         ),
+        //                       ),
+        //                     ),
+        //                   ),
+        //                   GestureDetector(
+        //                     onTap: () {
+        //                       if (prefs!.containsKey('uid')) {
+        //                         Place_Order(date);
+        //                       } else {
+        //                         Navigator.pushNamed(context, LOGIN);
+        //                       }
+        //                     },
+        //                     child: Card(
+        //                       child: Container(
+        //                         decoration: BoxDecoration(
+        //                           borderRadius: BorderRadius.circular(5),
+        //                           color: Color_me.main,
+        //                         ),
+        //                         alignment: Alignment.center,
+        //                         width: MediaQuery.of(context).size.width * .30,
+        //                         height: MediaQuery.of(context).size.height,
+        //                         child: Text(
+        //                           "Confirm",
+        //                           style: TextStyle(color: Colors.white),
+        //                         ),
+        //                       ),
+        //                     ),
+        //                   ),
+        //                 ],
+        //               ),
+        //             ),
+        //           )
+        //         ],
+        //       ),
+        //     ));
       },
     );
-  }*/
+  }
+
+  // void Bottom_sheet2(context) {
+  //   showModalBottomSheet(
+  //     isDismissible: false,
+  //     shape: RoundedRectangleBorder(
+  //       borderRadius: BorderRadius.circular(10.0),
+  //     ),
+  //     context: context,
+  //     builder: (BuildContext bc) {
+  //       return Container(
+  //           decoration: BoxDecoration(
+  //               borderRadius: new BorderRadius.only(
+  //             topRight: const Radius.circular(20.0),
+  //             topLeft: const Radius.circular(20.0),
+  //           )),
+  //           padding: EdgeInsets.all(10),
+  //           height: 60 * SizeConfig.heightMultiplier!,
+  //           child: SingleChildScrollView(
+  //             child: Column(
+  //               children: <Widget>[
+  //                 Container(
+  //                   padding: EdgeInsets.only(left: 10),
+  //                   width: MediaQuery.of(context).size.width,
+  //                   child: Text(
+  //                     "Confirm Order",
+  //                     style: TextStyle(
+  //                       fontWeight: FontWeight.w700,
+  //                       fontSize: 18,
+  //                     ),
+  //                   ),
+  //                 ),
+  //                 OwnerPayment(),
+  //                 Container(
+  //                   alignment: Alignment.center,
+  //                   color: Colors.white,
+  //                   width: MediaQuery.of(context).size.width,
+  //                   height: 50,
+  //                   child: Row(
+  //                     children: [
+  //                       Expanded(
+  //                           child: GestureDetector(
+  //                         onTap: () {
+  //                           Bottom_sheet2(_selectedValue);
+  //                         },
+  //                         child: Card(
+  //                           child: GestureDetector(
+  //                             onTap: () {
+  //                               Navigator.pop(context);
+  //                             },
+  //                             child: Container(
+  //                               decoration: BoxDecoration(
+  //                                 borderRadius: BorderRadius.circular(5),
+  //                                 color: Colors.grey,
+  //                               ),
+  //                               alignment: Alignment.center,
+  //                               width: MediaQuery.of(context).size.width,
+  //                               height: MediaQuery.of(context).size.height,
+  //                               child: Text("Cancel"),
+  //                             ),
+  //                           ),
+  //                         ),
+  //                       )),
+  //                       Expanded(
+  //                           child: Card(
+  //                         child: GestureDetector(
+  //                           onTap: () {
+  //                             Navigator.pop(context);
+  //                           },
+  //                           child: Container(
+  //                             decoration: BoxDecoration(
+  //                               borderRadius: BorderRadius.circular(5),
+  //                               color: Color_me.main,
+  //                             ),
+  //                             alignment: Alignment.center,
+  //                             width: MediaQuery.of(context).size.width,
+  //                             height: MediaQuery.of(context).size.height,
+  //                             child: Text(
+  //                               "Confirm",
+  //                               style: TextStyle(color: Colors.white),
+  //                             ),
+  //                           ),
+  //                         ),
+  //                       )),
+  //                     ],
+  //                   ),
+  //                 )
+  //               ],
+  //             ),
+  //           ));
+  //     },
+  //   );
+  // }
 
   Change_State() {
     if (mounted) {
@@ -997,7 +1088,7 @@ class _PaymentInfoState extends State<PaymentInfo> {
                   cart!.clear();
                   cart_id!.clear();
                   Total_Price = 0;
-                  /*Navigator.pushNamed(context, HOME);*/
+                  Navigator.pushNamed(context, HOME);
                   Navigator.of(context).pushNamedAndRemoveUntil(
                       HOME, (Route<dynamic> route) => false);
                 },

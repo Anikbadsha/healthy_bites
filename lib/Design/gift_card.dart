@@ -48,7 +48,7 @@ class _CustomGiftCardPageState extends State<CustomGiftCardPage> {
                     color: Color_me.main,
                     image: DecorationImage(
                       image: AssetImage(
-                        "assets/logo.png",
+                        "assets/Healthy-Bites-white-transparent.png",
                       ),
                       fit: BoxFit.fitWidth,
                     ),

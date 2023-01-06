@@ -47,225 +47,242 @@ class _OrderHistoryState extends State<OrderHistory> {
         builder: (content, data, child) {
           return prefs!.containsKey('uid')
               ? Container(
+                  padding: EdgeInsets.only(bottom: 10),
                   height: _height,
                   width: _width,
                   child: data.orderList != null
                       ? ListView.builder(
+                          shrinkWrap: true,
                           itemCount: data.orderList!.data!.length,
                           itemBuilder: (context, index) {
-                            return ExpandablePanel(
-                              header: Container(
-                                  padding: EdgeInsets.all(5),
-                                  width: _width,
+                            return Container(
+                              margin: EdgeInsets.only(bottom: 12, top: 8),
+                              padding: EdgeInsets.only(bottom: 8, top: 8),
+                              color: Colors.blueGrey.shade50,
+                              child: ExpandablePanel(
+                                header: Container(
+                                    decoration: BoxDecoration(),
+                                    padding: EdgeInsets.all(5),
+                                    width: _width,
+                                    child: Column(
+                                      children: [
+                                        Text(
+                                          "Order ID: #${data.orderList!.data![index].id}",
+                                          style: TextStyle(
+                                              fontSize: 2.5 *
+                                                  SizeConfig.textMultiplier!,
+                                              color: Colors.orange),
+                                        ),
+                                        Text(
+                                            data.orderList!.data![index]
+                                                .paymentStatus
+                                                .toString(),
+                                            style: TextStyle(
+                                              color: Colors.grey,
+                                              fontSize: 2 *
+                                                  SizeConfig.textMultiplier!,
+                                            )),
+                                      ],
+                                    )),
+                                collapsed: Center(
                                   child: Column(
                                     children: [
                                       Text(
-                                        "Order ID: #${data.orderList!.data![index].id}",
+                                        "Order By: # ${data.orderList!.data![index].name}",
                                         style: TextStyle(
-                                            fontSize: 2.5 *
-                                                SizeConfig.textMultiplier!,
-                                            color: Colors.orange),
+                                            color: Color_me.main, fontSize: 22),
+                                        softWrap: true,
+                                        maxLines: 2,
+                                        overflow: TextOverflow.ellipsis,
                                       ),
-                                      Text(
-                                          data.orderList!.data![index]
-                                              .paymentStatus
+                                    ],
+                                  ),
+                                ),
+
+                                expanded: Container(
+                                    width: _width,
+                                    child: Column(
+                                      children: [
+                                        Text(
+                                          data.orderList!.data![index].name
                                               .toString(),
                                           style: TextStyle(
-                                            color: Colors.grey,
-                                            fontSize:
-                                                2 * SizeConfig.textMultiplier!,
-                                          )),
-                                      Divider()
-                                    ],
-                                  )),
-                              collapsed: Text(
-                                "gtygfcrhtd",
-                                softWrap: true,
-                                maxLines: 2,
-                                overflow: TextOverflow.ellipsis,
+                                              color: Colors.green,
+                                              fontSize: 2.5 *
+                                                  SizeConfig.textMultiplier!),
+                                        ),
+                                        Text(
+                                          data.orderList!.data![index].phone
+                                              .toString(),
+                                          style: TextStyle(
+                                              fontSize: 2.2 *
+                                                  SizeConfig.textMultiplier!),
+                                        ),
+                                        Text(
+                                          "Order Amount : ৳ ${data.orderList!.data![index].subTotal.toString()}",
+                                          style: TextStyle(
+                                              fontSize: 2.2 *
+                                                  SizeConfig.textMultiplier!),
+                                        ),
+                                        SizedBox(
+                                          height:
+                                              2 * SizeConfig.heightMultiplier!,
+                                        ),
+                                        Row(
+                                          children: [
+                                            Expanded(child: Container()),
+                                            Expanded(
+                                              child: Text(
+                                                data.orderList!.data![index]
+                                                    .saleDate
+                                                    .toString(),
+                                                textAlign: TextAlign.center,
+                                                style: TextStyle(
+                                                    color: Colors.redAccent,
+                                                    fontSize: 2 *
+                                                        SizeConfig
+                                                            .textMultiplier!),
+                                              ),
+                                            )
+                                          ],
+                                        ),
+                                        SizedBox(
+                                          height:
+                                              1 * SizeConfig.heightMultiplier!,
+                                        ),
+                                        Row(
+                                          children: [
+                                            Expanded(
+                                              child: Text(
+                                                'Status',
+                                                textAlign: TextAlign.center,
+                                                style: TextStyle(
+                                                    fontWeight: FontWeight.bold,
+                                                    fontSize: 2 *
+                                                        SizeConfig
+                                                            .textMultiplier!),
+                                              ),
+                                            ),
+                                            Expanded(
+                                              child: Text(
+                                                data.orderList!.data![index]
+                                                    .orderStatus
+                                                    .toString(),
+                                                textAlign: TextAlign.center,
+                                                style: TextStyle(
+                                                    fontSize: 2 *
+                                                        SizeConfig
+                                                            .textMultiplier!,
+                                                    color: Colors.red),
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                        SizedBox(
+                                          height:
+                                              1 * SizeConfig.heightMultiplier!,
+                                        ),
+                                        Row(
+                                          children: [
+                                            Expanded(
+                                              child: Text(
+                                                'Address',
+                                                textAlign: TextAlign.center,
+                                                style: TextStyle(
+                                                    fontWeight: FontWeight.bold,
+                                                    fontSize: 2 *
+                                                        SizeConfig
+                                                            .textMultiplier!),
+                                              ),
+                                            ),
+                                            Expanded(
+                                              child: Text(
+                                                data.orderList!.data![index]
+                                                        .area
+                                                        .toString() +
+                                                    "," +
+                                                    data.orderList!.data![index]
+                                                        .address
+                                                        .toString(),
+                                                textAlign: TextAlign.center,
+                                                style: TextStyle(
+                                                    fontSize: 2 *
+                                                        SizeConfig
+                                                            .textMultiplier!),
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                        SizedBox(
+                                          height:
+                                              1 * SizeConfig.heightMultiplier!,
+                                        ),
+                                        Row(
+                                          children: [
+                                            Expanded(
+                                              child: Text(
+                                                'Shipping Charge',
+                                                textAlign: TextAlign.center,
+                                                style: TextStyle(
+                                                    fontWeight: FontWeight.bold,
+                                                    fontSize: 2 *
+                                                        SizeConfig
+                                                            .textMultiplier!),
+                                              ),
+                                            ),
+                                            Expanded(
+                                              child: Text(
+                                                data.orderList!.data![index]
+                                                        .shippingCharge
+                                                        .toString() +
+                                                    "৳",
+                                                textAlign: TextAlign.center,
+                                                style: TextStyle(
+                                                    fontSize: 2 *
+                                                        SizeConfig
+                                                            .textMultiplier!),
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                        SizedBox(
+                                          height:
+                                              1 * SizeConfig.heightMultiplier!,
+                                        ),
+                                        Row(
+                                          children: [
+                                            Expanded(
+                                              child: Text(
+                                                'Total Charge',
+                                                textAlign: TextAlign.center,
+                                                style: TextStyle(
+                                                    fontWeight: FontWeight.bold,
+                                                    fontSize: 2 *
+                                                        SizeConfig
+                                                            .textMultiplier!),
+                                              ),
+                                            ),
+                                            Expanded(
+                                              child: Text(
+                                                data.orderList!.data![index]
+                                                        .total
+                                                        .toString() +
+                                                    "৳",
+                                                textAlign: TextAlign.center,
+                                                style: TextStyle(
+                                                    fontSize: 2 *
+                                                        SizeConfig
+                                                            .textMultiplier!),
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                        Divider()
+                                      ],
+                                    )),
+                                // tapHeaderToExpand: true,
+                                // hasIcon: true,
                               ),
-                              expanded: Container(
-                                  width: _width,
-                                  child: Column(
-                                    children: [
-                                      Text(
-                                        data.orderList!.data![index].name
-                                            .toString(),
-                                        style: TextStyle(
-                                            color: Colors.green,
-                                            fontSize: 2.5 *
-                                                SizeConfig.textMultiplier!),
-                                      ),
-                                      Text(
-                                        data.orderList!.data![index].phone
-                                            .toString(),
-                                        style: TextStyle(
-                                            fontSize: 2.2 *
-                                                SizeConfig.textMultiplier!),
-                                      ),
-                                      Text(
-                                        data.orderList!.data![index].paymentType
-                                            .toString(),
-                                        style: TextStyle(
-                                            fontSize: 2.2 *
-                                                SizeConfig.textMultiplier!),
-                                      ),
-                                      SizedBox(
-                                        height:
-                                            2 * SizeConfig.heightMultiplier!,
-                                      ),
-                                      Row(
-                                        children: [
-                                          Expanded(child: Container()),
-                                          Expanded(
-                                            child: Text(
-                                              data.orderList!.data![index]
-                                                  .saleDate
-                                                  .toString(),
-                                              textAlign: TextAlign.center,
-                                              style: TextStyle(
-                                                  color: Colors.redAccent,
-                                                  fontSize: 2 *
-                                                      SizeConfig
-                                                          .textMultiplier!),
-                                            ),
-                                          )
-                                        ],
-                                      ),
-                                      SizedBox(
-                                        height:
-                                            1 * SizeConfig.heightMultiplier!,
-                                      ),
-                                      Row(
-                                        children: [
-                                          Expanded(
-                                            child: Text(
-                                              'Status',
-                                              textAlign: TextAlign.center,
-                                              style: TextStyle(
-                                                  fontWeight: FontWeight.bold,
-                                                  fontSize: 2 *
-                                                      SizeConfig
-                                                          .textMultiplier!),
-                                            ),
-                                          ),
-                                          Expanded(
-                                            child: Text(
-                                              data.orderList!.data![index]
-                                                  .orderStatus
-                                                  .toString(),
-                                              textAlign: TextAlign.center,
-                                              style: TextStyle(
-                                                  fontSize: 2 *
-                                                      SizeConfig
-                                                          .textMultiplier!,
-                                                  color: Colors.red),
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                      SizedBox(
-                                        height:
-                                            1 * SizeConfig.heightMultiplier!,
-                                      ),
-                                      Row(
-                                        children: [
-                                          Expanded(
-                                            child: Text(
-                                              'Address',
-                                              textAlign: TextAlign.center,
-                                              style: TextStyle(
-                                                  fontWeight: FontWeight.bold,
-                                                  fontSize: 2 *
-                                                      SizeConfig
-                                                          .textMultiplier!),
-                                            ),
-                                          ),
-                                          Expanded(
-                                            child: Text(
-                                              data.orderList!.data![index].area
-                                                      .toString() +
-                                                  "," +
-                                                  data.orderList!.data![index]
-                                                      .address
-                                                      .toString(),
-                                              textAlign: TextAlign.center,
-                                              style: TextStyle(
-                                                  fontSize: 2 *
-                                                      SizeConfig
-                                                          .textMultiplier!),
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                      SizedBox(
-                                        height:
-                                            1 * SizeConfig.heightMultiplier!,
-                                      ),
-                                      Row(
-                                        children: [
-                                          Expanded(
-                                            child: Text(
-                                              'Shipping Charge',
-                                              textAlign: TextAlign.center,
-                                              style: TextStyle(
-                                                  fontWeight: FontWeight.bold,
-                                                  fontSize: 2 *
-                                                      SizeConfig
-                                                          .textMultiplier!),
-                                            ),
-                                          ),
-                                          Expanded(
-                                            child: Text(
-                                              data.orderList!.data![index]
-                                                      .shippingCharge
-                                                      .toString() +
-                                                  "৳",
-                                              textAlign: TextAlign.center,
-                                              style: TextStyle(
-                                                  fontSize: 2 *
-                                                      SizeConfig
-                                                          .textMultiplier!),
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                      SizedBox(
-                                        height:
-                                            1 * SizeConfig.heightMultiplier!,
-                                      ),
-                                      Row(
-                                        children: [
-                                          Expanded(
-                                            child: Text(
-                                              'Total Charge',
-                                              textAlign: TextAlign.center,
-                                              style: TextStyle(
-                                                  fontWeight: FontWeight.bold,
-                                                  fontSize: 2 *
-                                                      SizeConfig
-                                                          .textMultiplier!),
-                                            ),
-                                          ),
-                                          Expanded(
-                                            child: Text(
-                                              data.orderList!.data![index].total
-                                                      .toString() +
-                                                  "৳",
-                                              textAlign: TextAlign.center,
-                                              style: TextStyle(
-                                                  fontSize: 2 *
-                                                      SizeConfig
-                                                          .textMultiplier!),
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                      Divider()
-                                    ],
-                                  )),
-                              // tapHeaderToExpand: true,
-                              // hasIcon: true,
                             );
                           })
                       : Container())

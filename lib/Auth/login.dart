@@ -81,7 +81,7 @@ class _LogInState extends State<LogIn> {
                   height: 20 * SizeConfig.heightMultiplier!,
                   alignment: Alignment.center,
                   child: Image.asset(
-                    "assets/slash.png",
+                    "assets/Healthy-Bites-bg.png",
                     height: 40 * SizeConfig.imageSizeMultiplier!,
                   ),
                 ),

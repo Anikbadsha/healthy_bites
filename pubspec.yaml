@@ -47,7 +47,7 @@ dependencies:
   skeleton_text: ^3.0.0
   flutter_flushbar: ^0.0.2
   page_transition: ^2.0.9
-  flutter_html: ^2.2.1
+  flutter_html: 
   dotted_line: ^3.1.0
   find_dropdown: ^1.0.0
   searchable_dropdown: ^1.1.3
@@ -68,6 +68,8 @@ dependencies:
   flutter_spinkit: ^5.1.0
   another_flushbar: ^1.12.29
   google_fonts: ^3.0.1
+  flutter_tawk: ^0.1.0
+  webview_flutter: ^3.0.1
 
 dev_dependencies:
   flutter_test:
@@ -100,8 +102,6 @@ flutter:
   assets:
     - Language/en-EN.json
     - Language/bn-BN.json
-    - assets/kiss.jpg
-    - assets/logo.png
     - assets/avator.png
     - assets/alu.jpg
     - assets/success.gif
@@ -110,6 +110,8 @@ flutter:
     - assets/rocket.jpg
     - assets/slash.png
     - assets/announce.png
+    - assets/Healthy-Bites-bg.png
+    - assets/Healthy-Bites-white-transparent.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

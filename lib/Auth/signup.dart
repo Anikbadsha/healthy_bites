@@ -76,8 +76,8 @@ class _SignUpState extends State<SignUp> {
                 height: 20 * SizeConfig.heightMultiplier!,
                 alignment: Alignment.center,
                 child: Image.asset(
-                  "assets/slash.png",
-                  height: 30 * SizeConfig.imageSizeMultiplier!,
+                  "assets/Healthy-Bites-bg.png",
+                  height: 40 * SizeConfig.imageSizeMultiplier!,
                 ),
               ),
               Container(
@@ -332,7 +332,7 @@ class _SignUpState extends State<SignUp> {
         await http.post(Uri.parse('$main_url/api/customer/otp'), body: {
       'phone': phoneController.text,
       'otp': otpController.text,
-      'password': passwordController.text,
+      'password': passwordController.text!,
       'token': token1,
     });
     print(response.body.toString());

@@ -97,7 +97,7 @@ class SplashScreenState extends State<SplashScreen>
               Icon(
                 Icons.shopping_bag,
                 color: Color_me.main,
-                size: 60,
+                size: 80,
               ),
               Center(
                 child: Text(
@@ -105,7 +105,7 @@ class SplashScreenState extends State<SplashScreen>
                   style: TextStyle(
                       color: Color_me.main,
                       fontWeight: FontWeight.w700,
-                      fontSize: 35),
+                      fontSize: 40),
                 ),
               ),
             ],

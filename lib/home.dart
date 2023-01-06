@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:healthy_bites/Bottom_Bar/chat.dart';
 import 'package:healthy_bites/Bottom_Bar/home_page.dart';
 import 'package:healthy_bites/Bottom_Bar/notification.dart';
 import 'package:healthy_bites/Bottom_Bar/points.dart';
@@ -438,9 +439,11 @@ class _HomeState extends State<Home> {
                     ],
                   ),
                   onTap: () {
+                    UrlLauncher.launch('https://www.freeprivacypolicy.com/',
+                        forceWebView: false);
+
                     // Update the state of the app.
-                    _launchInWebViewOrVC(
-                        'https://www.freeprivacypolicy.com/live/0755655a-43e0-4cf7-8c60-44adf69634aa');
+                    // _launchInWebViewOrVC('https://www.freeprivacypolicy.com/');
                     /*Navigator.of(context).pushNamed(SETTINGS);*/
 
                     // ...
@@ -470,7 +473,7 @@ class _HomeState extends State<Home> {
                   onTap: () {
                     // Update the state of the app.
                     Navigator.pop(context);
-                    /*Navigator.of(context).pushNamed(SETTINGS);*/
+                    // Navigator.of(context).pushNamed(SETTINGS);
 
                     // ...
                   },
@@ -541,8 +544,12 @@ class _HomeState extends State<Home> {
                             Expanded(
                                 child: InkWell(
                               onTap: () {
-                                UrlLauncher.launch("https://m.me/angobazar",
-                                    forceWebView: false);
+                                setState(() {
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (index) => ChatBar()));
+                                });
                               },
                               child: Container(
                                 padding: EdgeInsets.only(top: 10),
@@ -622,8 +629,8 @@ class _HomeState extends State<Home> {
                         width: MediaQuery.of(context).size.width,
                         child: InkWell(
                           onTap: () {
-                            UrlLauncher.launch("https://m.me/Shodaibuzz",
-                                forceWebView: true);
+                            // UrlLauncher.launch("https://m.me/Shodaibuzz",
+                            //     forceWebView: true);
                           },
                           child: Container(
                             padding: EdgeInsets.only(top: 10, right: 15),

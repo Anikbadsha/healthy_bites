@@ -241,8 +241,8 @@ class _ProductDescriptionState extends State<ProductDescription> {
                       ),
                       Container(
                         width: _width,
-                        child: Html(
-                          data: data.description.toString(),
+                        child: Text(
+                          data.attribute.toString(),
                         ),
                       )
                     ],

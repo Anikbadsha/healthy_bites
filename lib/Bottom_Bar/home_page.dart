@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_carousel_slider/carousel_slider.dart';
 import 'package:flutter_carousel_slider/carousel_slider_indicators.dart';
+import 'package:healthy_bites/Bottom_Bar/Category/subcategory.dart';
 import 'package:healthy_bites/Color_Me/Color_me.dart';
 import 'package:healthy_bites/Design/Skeleton/sk_product.dart';
 import 'package:healthy_bites/Design/Skeleton/sk_square.dart';
@@ -12,6 +13,7 @@ import 'package:healthy_bites/IMP/url.dart';
 import 'package:healthy_bites/PROVIDER/get_data.dart';
 import 'package:healthy_bites/Responsive/responsive_ui.dart';
 import 'package:healthy_bites/Responsive/size_config.dart';
+import 'package:page_transition/page_transition.dart';
 import 'package:progressive_image/progressive_image.dart';
 import 'package:provider/provider.dart';
 
@@ -84,7 +86,7 @@ class _HomePageState extends State<HomePage> {
     final double itemHeight = (size.height - kToolbarHeight - 24) / 3;
     final double itemWidth = size.width / 2;
     return MaterialApp(
-      /*onGenerateRoute: (settings) {
+      onGenerateRoute: (settings) {
         if (settings.name == SUBCATEGORY) {
           return PageTransition(
             child: SubCategory(),
@@ -94,8 +96,7 @@ class _HomePageState extends State<HomePage> {
         } else {
           return null;
         }
-      },*/
-
+      },
       debugShowCheckedModeBanner: false,
       builder: (context, child) {
         return Scaffold(
@@ -114,7 +115,7 @@ class _HomePageState extends State<HomePage> {
                       width: _width,
                       color: Colors.orange,
                       child: Text(
-                        "আমরা শুধুমাত্র উত্তরা এরিয়াতে ডেলিভারী দিয়ে থাকি। যোগাযোগ করুণ +8809678908909",
+                        "আমরা শুধুমাত্র উত্তরা এরিয়াতে ডেলিভারী দিয়ে থাকি। যোগাযোগ করুণ +880",
                         style: TextStyle(
                             fontSize: 2.3 * SizeConfig.textMultiplier),
                       ),
@@ -159,10 +160,10 @@ class _HomePageState extends State<HomePage> {
                                                   topRight: Radius.circular(5)),
                                               child: ProgressiveImage(
                                                 placeholder: AssetImage(
-                                                    'assets/slash.png'),
+                                                    'assets/Healthy-Bites-white-transparent.png'),
                                                 // size: 1.87KB
                                                 thumbnail: AssetImage(
-                                                    'assets/slash.png'),
+                                                    'assets/Healthy-Bites-white-transparent.png'),
                                                 // size: 1.29MB
                                                 image: NetworkImage(main_url +
                                                     data
@@ -193,7 +194,7 @@ class _HomePageState extends State<HomePage> {
                         padding: EdgeInsets.only(left: 10, right: 10),
                         width: _width,
                         alignment: Alignment.center,
-                        child: setCommonText('আঙ্গো ক্যাটাগরী', Colors.black,
+                        child: setCommonText('Our Categories', Colors.black,
                             25.0, FontWeight.w500, 1),
                       ),
                       Container(
