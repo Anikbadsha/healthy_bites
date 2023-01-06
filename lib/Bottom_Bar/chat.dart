@@ -5,7 +5,6 @@ import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_tawk/flutter_tawk.dart';
 import 'package:healthy_bites/Color_Me/Color_me.dart';
-import 'package:webview_flutter/webview_flutter.dart';
 
 class ChatBar extends StatefulWidget {
   const ChatBar({super.key});
