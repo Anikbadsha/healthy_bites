@@ -33,7 +33,7 @@ class _ForgetPassState extends State<ForgetPass> {
   final GlobalKey<FormState> _formKey = new GlobalKey<FormState>();
   final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
 
-  // void firebaseCloudMessaging_Listeners() {
+  // void firebaseCloudMessaging_Listeners() {nah belt
   //   _firebaseMessaging.getToken().then((token) {
   //     print("token is " + token!);
   //     token1 = token;
@@ -74,7 +74,7 @@ class _ForgetPassState extends State<ForgetPass> {
                 height: 20 * SizeConfig.heightMultiplier!,
                 alignment: Alignment.center,
                 child: Image.asset(
-                  "assets/slash.png",
+                  "assets/Healthy-Bites-bg.png",
                   height: 30 * SizeConfig.imageSizeMultiplier!,
                 ),
               ),

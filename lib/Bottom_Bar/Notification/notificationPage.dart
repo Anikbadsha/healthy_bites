@@ -17,7 +17,7 @@ class _NotificationPageState extends State<NotificationPage> {
       body: Center(
           child: Container(
         child: Text(
-          "Notification",
+          "You have no notification right now",
           style: TextStyle(fontSize: 44, color: Color_me.main),
         ),
       )),

@@ -17,14 +17,12 @@ class Customdialog extends StatelessWidget {
                 child: Material(
                   color: Colors.white,
 
-                  /* child: Image.asset(
-                    'assets/loader.gif',
-                    height: 80,
-                    width: 80,
-                  ),*/
-                  child: CircularProgressIndicator(),
-                  shape: CircleBorder(),
-                  clipBehavior: Clip.antiAlias,
+                  // child: Image.asset(
+                  //   'assets/loader.gif',
+                  //   height: 80,
+                  //   width: 80,
+                  // ),
+                  child: Text("You have no notification right now"),
                 ),
               ),
             ),

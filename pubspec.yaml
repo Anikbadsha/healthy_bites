@@ -69,7 +69,7 @@ dependencies:
   another_flushbar: ^1.12.29
   google_fonts: ^3.0.1
   flutter_tawk: ^0.1.0
-  webview_flutter: ^3.0.1
+
 
 dev_dependencies:
   flutter_test:
